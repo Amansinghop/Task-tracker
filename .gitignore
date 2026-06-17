@@ -7,7 +7,7 @@ out/
 
 # env files
 .env
-.env*.local
+
 
 # typescript
 *.tsbuildinfo
