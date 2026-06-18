@@ -51,6 +51,7 @@ export function LoginForm() {
       if (data.hasOtherSession) {
         setShowSessionConflict(true);
         setTimeout(() => {
+          router.refresh();
           if (data.user?.status === 'pending') {
             router.push('/pending');
           } else if (data.user?.status === 'rejected') {
@@ -62,11 +63,12 @@ export function LoginForm() {
               router.push('/');
             }
           }
-          router.refresh();
         }, 2000);
         return;
       }
 
+      // Refresh router cache first so middleware sees the new auth cookie
+      router.refresh();
       if (data.user?.status === 'pending') {
         router.push('/pending');
       } else if (data.user?.status === 'rejected') {

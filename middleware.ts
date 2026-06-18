@@ -27,7 +27,7 @@ export async function middleware(request: NextRequest) {
   if (!decoded) {
     // Invalid token - redirect to login
     const response = NextResponse.redirect(new URL('/login', request.url));
-    response.cookies.delete('opsdash-token');
+    response.cookies.delete('tasktracker-token');
     return response;
   }
 
